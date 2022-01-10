@@ -1,0 +1,108 @@
+package com.company;
+import java.util.Scanner;
+
+public class array_operation {
+    public static int i,j;
+    public static Scanner s=new Scanner(System.in);
+    static void twoD_array_addition(){
+        System.out.print("enter the value of row and column:");
+        int row=s.nextInt();
+        int column=s.nextInt();
+        int [][]a=new int [row][column];
+        System.out.println("enter element of first array:");
+        for(i=0;i<row;i++){
+            for(j=0;j<column;j++){
+                a[i][j]=s.nextInt();
+            }
+        }
+        int [][]b=new int [row][column];
+        System.out.println("enter element of second array:");
+        for(i=0;i<row;i++){
+            for(j=0;j<column;j++){
+                b[i][j]=s.nextInt();
+            }
+        }
+        int [][]c=new int [row][column];
+        System.out.println("the element of the array after addition are:");
+        for(i=0;i<row;i++){
+            for(j=0;j<column;j++){
+                c[i][j]=a[i][j]+b[i][j];
+                System.out.print(c[i][j]);
+                System.out.print("\t");
+            }
+            System.out.println("\n");
+        }
+    }
+    static void display(int [] b){
+        for(i=0;i<b.length;i++){
+            System.out.print(b[i]);
+            System.out.print("\t");
+        }
+    }
+    static void shorting(int [] b){
+        for(i=1;i<b.length;i++){
+            int temp=b[i];
+            j=i-1;
+            while(j>=0&&b[j]>temp){
+                b[j+1]=b[j];
+                j--;
+            }
+            b[j+1]=temp;
+        }
+        System.out.print("array element after shorting are:");
+        display(b);
+    }
+    static void insertion(int [] c){
+        int n=c.length;
+        int []d=new int[n+1];
+        for(i=0;i<c.length;i++){
+            d[i]=c[i];
+        }
+        System.out.print("enter element which you want insert:");
+        int ele=s.nextInt();
+        System.out.print("enter position on which you want insert element:");
+        int pos=s.nextInt();
+        if(pos<0||pos>d.length) {
+            System.out.println("invalid condition");
+        }
+        else{
+            for(i=c.length-1;i>=pos-1;i--){
+                d[i+1]=d[i];
+            }
+            d[pos-1]=ele;
+            display(d);
+        }
+    }
+    static void deletion(int []d){
+        System.out.print("enter position at which you want delete the data:");
+        int pos=s.nextInt();
+        int n=d.length;
+        int[] e = new int[n - 1];
+        if(pos<0||pos>d.length){
+            System.out.println("invalid condition.");
+        }
+        else {
+            for (i = pos - 1; i < d.length - 1; i++) {
+                d[i] = d[i + 1];
+            }
+            for(i=0;i<e.length;i++){
+                e[i]=d[i];
+            }
+            display(e);
+        }
+    }
+    public static void main(String[] args) {
+        //twoD_array_addition();
+        System.out.print("enter size of the array:");
+        int size=s.nextInt();
+        int a[]=new int [size];
+        System.out.print("enter array's element:");
+        for(i=0;i<size;i++){
+            a[i]=s.nextInt();
+        }
+        //shorting(a);
+        insertion(a);
+        //deletion(a);
+        //you can use switch statement here for better perform operation.
+    }
+}
